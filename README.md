@@ -2,7 +2,7 @@
 
 ```console
 $ npm install
-$ npm start
+$ npm start &
 $ open http;//localhost:8080
 ```
 
