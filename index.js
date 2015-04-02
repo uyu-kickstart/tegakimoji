@@ -96,7 +96,7 @@
     clear();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '300px sans-serif';
+    ctx.font = '300px "あくあフォント"';
     ctx.fillText(txt, 150, 150, 300);
   }
 
