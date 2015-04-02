@@ -1,0 +1,8 @@
+{
+  "name": "tegakimoji",
+  "version": "0.1.0-dev",
+  "author": "kickstart <uyu.kickstart@gmail.com>",
+  "dependencies": {
+    "canvas": "^1.2.1"
+  }
+}

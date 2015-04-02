@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>課研1</title>
+  </head>
+  <body>
+    <h1>tegakimoji</h2>
+    <section>
+      <canvas id="canvas" width="300" height="300"></canvas>
+      <input type="button" id="w_up" value="+">
+      <input type="button" id="w_down" value="-">
+      <input type="button" id="clear" value="clear">
+      <input type="text" id="text" size="4" placeholder="文字">
+      <input type="button" id="render" value="表示"> 
+      <input type="button" id="recognize" value="認識"> 
+    </section>
+    <section>
+      <h2>Simple</h2>
+      <ul id="candidate-simple"></ul>
+      <h2>Circle</h2>
+      <ul id="candidate-circle"></ul>
+      <h2>Circle-Z</h2>
+      <ul id="candidate-circlez"></ul>
+    </section>
+    <style>
+    #canvas {
+      border: solid black 1px;
+    }
+    </style>
+    <script src="db/db.js"></script>
+    <script src="lib/chars.js"></script>
+    <script src="lib/algorithm/simple.js"></script>
+    <script src="lib/algorithm/circle.js"></script>
+    <script src="lib/algorithm/circlez.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
