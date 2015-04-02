@@ -2,7 +2,12 @@
   "name": "tegakimoji",
   "version": "0.1.0-dev",
   "author": "kickstart <uyu.kickstart@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "static"
+  },
   "dependencies": {
-    "canvas": "^1.2.1"
+    "canvas": "^1.2.1",
+    "node-static": "^0.7.6"
   }
 }
