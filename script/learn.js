@@ -4,15 +4,16 @@ chars  = require('../lib/chars'),
 Canvas = require('canvas');
 
 var
-p4      = parseFloat(process.argv[2]),
-p32     = parseFloat(process.argv[3]),
-font    = process.argv[4],
-file  = process.argv[5];
+p4        = parseFloat(process.argv[2]),
+p32       = parseFloat(process.argv[3]),
+font      = process.argv[4],
+file      = process.argv[5],
+useSquare = Boolean(process.argv[6]);
 
 if (isNaN(p4) || isNaN(p32)       ||
     typeof font === 'undefined'   ||
     typeof file === 'undefined') {
-  console.log('[usage]: node script/learn.js [p4] [p32] [font] [file]');
+  console.log('[usage]: node script/learn.js [p4] [p32] [font] [file] [useSquare]');
   process.exit(0);
 }
 
@@ -36,7 +37,7 @@ chrs.forEach(function (ch, i) {
 
   var
   data   = ctx.getImageData(0, 0, W, H),
-  rect   = chars.charRect(data),
+  rect   = chars[useSquare ? 'charSquare' : 'charRect'](data),
   mesh4  = chars.charMesh(data, rect,  4, p4),
   int4   = chars.meshToInt(mesh4),
   mesh32 = chars.charMesh(data, rect, 32, p32);
@@ -47,7 +48,7 @@ chrs.forEach(function (ch, i) {
 
 var
 json = JSON.stringify(learn),
-outFile = 'db/' + [file, p4, p32, font].join('_');
+outFile = 'db/' + [file, p4, p32, font, useSquare].join('_');
 
 fs.writeFileSync(outFile + '.json', json);
 console.log('write to ' + outFile + '.json (size: ' + Buffer(json).length + ')');
