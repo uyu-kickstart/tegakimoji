@@ -51,13 +51,13 @@
     [{
       name: 'simple',
       recognize: recognizeSimple,
-    }, {
+    },/* {
       name: 'circle',
       recognize: recognizeCircle,
     }, {
       name: 'circlez',
       recognize: recognizeCirclez,
-    }].forEach(function (data) {
+    } */].forEach(function (data) {
       var
       start = Date.now(),
       candidate = data.recognize(ctx, W, H),
