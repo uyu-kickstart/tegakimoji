@@ -15,10 +15,8 @@ var
 json = JSON.parse(fs.readFileSync(db, 'utf-8')),
 i;
 
-json = Object.keys(json).reduce(function (a, key) {
-  return a.concat(json[key]);
-}, []).reduce(function (json, f) {
-  json[f[0]] = f[1];
+json = json.reduce(function loop(json, v) {
+  json[v[0]] = v[1];
   return json;
 }, {});
 
