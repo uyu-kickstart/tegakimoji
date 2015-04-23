@@ -4,18 +4,19 @@ chars  = require('../lib/chars'),
 Canvas = require('canvas');
 
 var
-p4        = parseFloat(process.argv[2]),
-p32       = parseFloat(process.argv[3]),
-font      = process.argv[4],
-file      = process.argv[5],
-useSquare = Boolean(process.argv[6]);
+p32       = parseFloat(process.argv[2]),
+font      = process.argv[3],
+file      = process.argv[4],
+useSquare = process.argv[5];
 
 if (isNaN(p4) || isNaN(p32)       ||
     typeof font === 'undefined'   ||
     typeof file === 'undefined') {
-  console.log('[usage]: node script/learn.js [p4] [p32] [font] [file] [useSquare]');
-  process.exit(0);
+  console.log('[usage]: node script/learn.js [p32] [font] [file] [useSquare]');
+  process.exit(1);
 }
+
+useSquare = /true/i.test(useSquare);
 
 var
 W = 300, H = 300,
@@ -28,7 +29,7 @@ chrs = fs.readFileSync(inFile, 'utf-8').split('\n').filter(Boolean);
 console.log('read from ' + inFile);
 
 var
-learn = {};
+learn = [];
 
 chrs.forEach(function (ch, i) {
   console.log('start => "' + ch + '" (' + i + '/' + chrs.length + ')');
@@ -36,14 +37,11 @@ chrs.forEach(function (ch, i) {
   renderChar(ctx, ch, W, H);
 
   var
-  data   = ctx.getImageData(0, 0, W, H),
-  rect   = chars[useSquare ? 'charSquare' : 'charRect'](data),
-  mesh4  = chars.charMesh(data, rect,  4, p4),
-  int4   = chars.meshToInt(mesh4),
-  mesh32 = chars.charMesh(data, rect, 32, p32);
+  data = ctx.getImageData(0, 0, W, H),
+  rect = chars[useSquare ? 'charSquare' : 'charRect'](data),
+  mesh = chars.charMesh(data, rect, 32, p32);
 
-  learn[int4] = learn[int4] || [];
-  learn[int4].push([ch, mesh32]);
+  learn.push([ch, mesh32]);
 });
 
 var
