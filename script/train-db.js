@@ -12,7 +12,7 @@ useSquare = process.argv[5];
 if (isNaN(p4) || isNaN(p32)       ||
     typeof font === 'undefined'   ||
     typeof file === 'undefined') {
-  console.log('[usage]: node script/learn.js [p32] [font] [file] [useSquare]');
+  console.log('[usage]: node script/train-db.js [p32] [font] [file] [useSquare]');
   process.exit(1);
 }
 
