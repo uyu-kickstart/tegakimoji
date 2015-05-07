@@ -1,5 +1,5 @@
 var
-fs     = require('fs');
+fs = require('fs');
 
 var
 db = process.argv[2],

@@ -51,13 +51,7 @@
     [{
       name: 'simple',
       recognize: recognizeSimple,
-    },/* {
-      name: 'circle',
-      recognize: recognizeCircle,
-    }, {
-      name: 'circlez',
-      recognize: recognizeCirclez,
-    } */].forEach(function (data) {
+    }].forEach(function (data) {
       var
       start = Date.now(),
       candidate = data.recognize(ctx, W, H),
@@ -75,7 +69,7 @@
       candidate.forEach(function (c, i) {
         var
         li = document.createElement('li');
-        li.textContent = i + ': ' + c.char + '(' + c.score + ')';
+        li.textContent = (i + 1) + ': ' + c.char + '(' + c.score + ')';
         ul.appendChild(li);
       });
     });
