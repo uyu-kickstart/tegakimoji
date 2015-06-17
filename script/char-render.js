@@ -25,7 +25,7 @@ canvas.pngStream().pipe(fs.createWriteStream(font + '-' + ch + '.png'));
 function renderChar(ctx, ch, font, W, H) {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.font = W + 'px ' + font;
+  ctx.font = W + 'px "' + font + '"';
   ctx.fillText(ch, W / 2, H / 2, W);
 }
 
